@@ -1,55 +1,50 @@
 <!DOCTYPE html>
 <html>
-  <head>
-  	<meta charset="utf-8">
-    <title>Кафедра термодинамики и тепловых двигателей</title>
-    <!-- Bootstrap -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="my.css" rel="stylesheet" media="screen">
-  </head>
-  </head>
-  <body>  	
-  <div class="container-fluid" margin-left: auto;>
-  	<div class="navbar">
-  		<div class="navbar-inner">
-    		<a class="brand" href="#">Кафедра термодинамики и тепловых двигателей</a>
-    		<ul class="nav">
-      			<li><a href="sostav.html">Состав кафедры</a></li>
-      			<li><a href="#">Новости</a></li>
-      			<li><a href="#">О кафедре</a></li>
-      			<li><a href="#">Контакты</a></li>
-    		</ul>
-  		</div>
-	</div>  
-  <div class="alert alert-info">
-      <button type="button" class="close" data-dismiss="alert">&times;</button>
-      Для перехода к странице Состав кафедры воспользуйтесь кнопкой вверху страницы</strong>
-   </div>
+	<head>
+  		<meta charset="utf-8">
+    	<title>Кафедра термодинамики и тепловых двигателей</title>
+    	<!-- Bootstrap -->
+    	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    	<link href="my.css" rel="stylesheet" media="screen">
+  	</head>
+	<body>  	
+  		<div class="container-fluid" margin-left: auto;>
+  			<div class="navbar">
+  				<div class="navbar-inner">
+    				<a class="brand" href="#">Кафедра термодинамики и тепловых двигателей</a>
+    				<ul class="nav">
+						<li><a href='sostav.html'>Состав кафедры</a></li>
+						<li><a href=''>Новости</a></li>
+						<li class='active'><a href='photo.html'>Фотографии</a></li>
+						<li><a href=''>Контакты</a></li>
 
-<!-- 1. Link to jQuery, -->
-<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script> <!-- 93 KB -->
-
-<!-- fotorama.css & fotorama.js. -->
-<link  href="http://fotorama.s3.amazonaws.com/4.1.16/fotorama.css" rel="stylesheet"> <!-- 13 KB -->
-<script src="http://fotorama.s3.amazonaws.com/4.1.16/fotorama.js"></script> <!-- 28 KB -->
-
-<!-- 2. Add images to <div class="fotorama"></div>. -->
-<div class="fotorama" data-min-width="400" align="center" 
-data-allow-full-screen="native">
-  <img src="img/bw_Lopatin.jpg">
-  <img src="img/bw_Shotidi.jpg">
-  <img src="img/bw_Kalinin.jpg">
-  <img src="img/vasilev.jpg">
-  <img src="img/Churikova.jpg">
-  <img src="img/Lopatin.jpg">
-  <img src="img/Shotidi.jpg">
-  <img src="img/Kalinin.jpg">
+    				</ul>
+  			</div>
+		</div>  
+  		<div class="alert alert-info">
+      		<button type="button" class="close" data-dismiss="alert">&times;</button>
+      		Для перехода к странице Состав кафедры воспользуйтесь кнопкой вверху страницы
+   		</div>
+<!-- 1. Link to jQuery -->
+<script src='http://code.jquery.com/jquery-1.10.1.min.js'></script>
+<!-- fotorama.css & fotorama.js, 13 KB, 28 KB -->
+<link href='http://fotorama.s3.amazonaws.com/4.1.16/fotorama.css' rel='stylesheet'>
+<script src='http://fotorama.s3.amazonaws.com/4.1.16/fotorama.js'></script>
+<!-- 2. Add images to <div class="fotorama"></div> -->
+<div align='center' class='fotorama' data-allow-full-screen='true' data-min-width='400'>
+  <img src='img/bw_Lopatin.jpg'>
+  <img src='img/bw_Shotidi.jpg'>
+  <img src='img/bw_Kalinin.jpg'>
+  <img src='img/vasilev.jpg'>
+  <img src='img/Churikova.jpg'>
+  <img src='img/Lopatin.jpg'>
+  <img src='img/Shotidi.jpg'>
+  <img src='img/Kalinin.jpg'>
 </div>
+<!-- 3. Enjoy -->
 
-<!-- 3. Enjoy! -->
-
-    <div id="bottom_div"></div>
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>    
-  </body>
+	<div id="bottom_div"></div>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>    
+</body>
 </html>

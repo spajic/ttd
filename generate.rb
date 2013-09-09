@@ -60,13 +60,8 @@ def generate_body(haml_file_name)
 	body
 end
 
-def generate_personal_pages()
+def generate_personal_pages(nav_links)
 	Dir["#{Dir.pwd}/PersonalPages/*"].each do |file_name|
-		nav_links = []
-		nav_links << {href:"sostav.html", text:"Состав кафедры"}
-		nav_links << {href:"", text:"Новости"}
-		nav_links << {href:"", text:"О кафедре"}
-		nav_links << {href:"", text:"Контакты"}
 		header = generate_header(nav_links, "Нет")
 		body   = generate_body(file_name)
 		footer = generate_footer
@@ -78,4 +73,32 @@ def generate_personal_pages()
 	end
 end
 
-generate_personal_pages
+def generate_sostav(nav_links)
+	header = generate_header(nav_links, "Состав кафедры")
+	body   = generate_body("#{Dir.pwd}/Main/sostav.haml")
+	footer = generate_footer
+	result_file = File.open("#{Dir.pwd}/sostav.html", 'w')
+	result_file.write(header + body + footer)
+end
+
+def generate_photo(nav_links)
+	header = generate_header(nav_links, "Фотографии")
+	body   = generate_body("#{Dir.pwd}/Main/photo.haml")
+	footer = generate_footer
+	result_file = File.open("#{Dir.pwd}/photo.html", 'w')
+	result_file.write(header + body + footer)
+end
+
+def generate_main_pages(nav_links)
+	generate_sostav(nav_links)
+	generate_photo(nav_links)
+end
+
+nav_links = []
+		nav_links << {href:"sostav.html", text:"Состав кафедры"}
+		nav_links << {href:"", text:"Новости"}
+		nav_links << {href:"photo.html", text:"Фотографии"}
+		nav_links << {href:"", text:"Контакты"}
+
+generate_personal_pages(nav_links)
+generate_main_pages(nav_links)
