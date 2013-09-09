@@ -6,6 +6,9 @@ function load()
   var frameDoc = my_frame.contentDocument || my_frame.contentWindow.document;
   var bot = frameDoc.getElementById("bottom_div");
   my_frame.height = bot.offsetTop + 10;
+  if(my_frame.height < 600) {
+  	my_frame.height = 600
+  }
 }
 </script>
  
