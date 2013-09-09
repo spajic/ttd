@@ -28,7 +28,7 @@ def generate_header()
 		</div>  
   		<div class="alert alert-info">
       		<button type="button" class="close" data-dismiss="alert">&times;</button>
-      		Для перехода к странице Состав кафедры воспользуйтесь кнопкой вверху страницы</strong>
+      		Для перехода к странице Состав кафедры воспользуйтесь кнопкой вверху страницы
    		</div>
 '
 end
