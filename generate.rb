@@ -2,7 +2,7 @@
 # хедер, основная часть, и футер.
 # При этом основная часть делается пишется на haml.
 
-def generate_header()
+def generate_header(nav_links)
 	header = 
 '<!DOCTYPE html>
 <html>
@@ -18,11 +18,14 @@ def generate_header()
   			<div class="navbar">
   				<div class="navbar-inner">
     				<a class="brand" href="#">Кафедра термодинамики и тепловых двигателей</a>
-    				<ul class="nav">
-      					<li><a href="sostav.html">Состав кафедры</a></li>
-      					<li><a href="#">Новости</a></li>
-      					<li><a href="#">О кафедре</a></li>
-      					<li><a href="#">Контакты</a></li>
+    				<ul class="nav">'
+    nav_links.each do |link|
+    	str = 
+"						<li><a href='#{link[:href]}'>#{link[:text]}</a></li>
+"
+    	header = header + str
+    end      					
+    header = header + '
     				</ul>
   			</div>
 		</div>  
@@ -52,7 +55,12 @@ end
 
 def generate_personal_pages()
 	Dir["#{Dir.pwd}/PersonalPages/*"].each do |file_name|
-		header = generate_header
+		nav_links = []
+		nav_links << {href:"sostav.html", text:"Состав кафедры"}
+		nav_links << {href:"", text:"Новости"}
+		nav_links << {href:"", text:"О кафедре"}
+		nav_links << {href:"", text:"Контакты"}
+		header = generate_header(nav_links)
 		body   = generate_body(file_name)
 		footer = generate_footer
 		result = header + body + footer	
