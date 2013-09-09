@@ -18,7 +18,8 @@ def generate_header(nav_links, active_link)
   			<div class="navbar">
   				<div class="navbar-inner">
     				<a class="brand" href="#">Кафедра термодинамики и тепловых двигателей</a>
-    				<ul class="nav">'
+    				<ul class="nav">
+'
     nav_links.each do |link|
     	if link[:text] == active_link
     		str = 
