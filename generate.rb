@@ -92,9 +92,9 @@ end
 
 nav_links = []
 		nav_links << {href:"sostav.html", text:"Состав кафедры"}
-		nav_links << {href:"", text:"Новости"}
+		#nav_links << {href:"", text:"Новости"}
 		nav_links << {href:"photo.html", text:"Фотографии"}
-		nav_links << {href:"", text:"Контакты"}
+		#nav_links << {href:"", text:"Контакты"}
 
 generate_personal_pages(nav_links)
 generate_main_pages(nav_links)
