@@ -17,7 +17,7 @@ def generate_header(nav_links, active_link)
   		<div class="container-fluid" margin-left: auto;>
   			<div class="navbar">
   				<div class="navbar-inner">
-    				<a class="brand" href="#">Кафедра термодинамики и тепловых двигателей</a>
+    				<a class="brand" href="sostav.html">Кафедра термодинамики и тепловых двигателей</a>
     				<ul class="nav">
 '
     nav_links.each do |link|
