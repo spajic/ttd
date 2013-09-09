@@ -1,0 +1,17 @@
+/ 1. Link to jQuery
+%script{src: "http://code.jquery.com/jquery-1.10.1.min.js"}
+/ fotorama.css & fotorama.js, 13 KB, 28 KB
+%link{href: "http://fotorama.s3.amazonaws.com/4.1.16/fotorama.css", rel:"stylesheet"}
+%script{src: "http://fotorama.s3.amazonaws.com/4.1.16/fotorama.js"}
+
+/ 2. Add images to <div class="fotorama"></div>
+.fotorama{"data-min-width"=>"400", align:"center", "data-allow-full-screen" => "native"}
+	%img{src:"img/bw_Lopatin.jpg"}
+	%img{src:"img/bw_Shotidi.jpg"}
+	%img{src:"img/bw_Kalinin.jpg"}
+	%img{src:"img/vasilev.jpg"}
+	%img{src:"img/Churikova.jpg"}
+	%img{src:"img/Lopatin.jpg"}
+	%img{src:"img/Shotidi.jpg"}
+	%img{src:"img/Kalinin.jpg"}
+/ 3. Enjoy
