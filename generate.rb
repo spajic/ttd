@@ -33,12 +33,6 @@ def generate_header()
 '
 end
 
-def generate_body()
-	%x( haml vasylev.html.haml vasylev.body.html )
-	file = File.open('vasylev.body.html', "r")
-	body = file.read
-end
-
 def generate_footer()
 	footer = '
 	<div id="bottom_div"></div>
@@ -48,10 +42,25 @@ def generate_footer()
 </html>'
 end
 
-def generate()
-	result = generate_header + generate_body + generate_footer
-	file = File.open('vasylev.result.html', 'w')
-	file.write(result)
+def generate_body(haml_file_name)
+	system("haml #{haml_file_name} #{haml_file_name}.html")
+	file = File.open("#{haml_file_name}.html", "r")
+	body = file.read.to_s
+	system("rm #{haml_file_name}.html")
+	body
 end
 
-generate
+def generate_personal_pages()
+	Dir["#{Dir.pwd}/PersonalPages/*"].each do |file_name|
+		header = generate_header
+		body   = generate_body(file_name)
+		footer = generate_footer
+		result = header + body + footer	
+		result_file_name = 
+			"#{file_name}".sub!('haml', 'html').sub('/PersonalPages', '')
+		result_file = File.open(result_file_name, 'w')
+		result_file.write(result)
+	end
+end
+
+generate_personal_pages
