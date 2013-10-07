@@ -85,15 +85,24 @@ def generate_photo(nav_links)
 	result_file.write(header + body + footer)
 end
 
+def generate_news(nav_links)
+	header = generate_header(nav_links, "Новости")
+	body   = generate_body("#{Dir.pwd}/Main/news.haml")
+	footer = generate_footer
+	result_file = File.open("#{Dir.pwd}/news.html", 'w')
+	result_file.write(header + body + footer)
+end
+
 def generate_main_pages(nav_links)
 	generate_sostav(nav_links)
 	generate_photo(nav_links)
+	generate_news(nav_links)
 end
 
 nav_links = []
 		nav_links << {href:"sostav.html", text:"Состав кафедры"}
-		#nav_links << {href:"", text:"Новости"}
-		nav_links << {href:"photo.html", text:"Фотографии"}
+		nav_links << {href:"news.html"  , text:"Новости"}
+		nav_links << {href:"photo.html" , text:"Фотографии"}
 		#nav_links << {href:"", text:"Контакты"}
 
 generate_personal_pages(nav_links)
