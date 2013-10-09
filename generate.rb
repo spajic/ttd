@@ -93,15 +93,35 @@ def generate_news(nav_links)
 	result_file.write(header + body + footer)
 end
 
+def generate_consult(nav_links)
+	header = generate_header(nav_links, "Консультации")
+	body   = generate_body("#{Dir.pwd}/Main/consult.haml")
+	footer = generate_footer
+	result_file = File.open("#{Dir.pwd}/consult.html", 'w')
+	result_file.write(header + body + footer)
+end
+
+def generate_about(nav_links)
+	header = generate_header(nav_links, "О кафедре")
+	body   = generate_body("#{Dir.pwd}/Main/about.haml")
+	footer = generate_footer
+	result_file = File.open("#{Dir.pwd}/about.html", 'w')
+	result_file.write(header + body + footer)
+end
+
 def generate_main_pages(nav_links)
 	generate_sostav(nav_links)
 	generate_photo(nav_links)
 	generate_news(nav_links)
+	generate_consult(nav_links)
+	generate_about(nav_links)
 end
 
 nav_links = []
-		nav_links << {href:"sostav.html", text:"Состав кафедры"}
 		nav_links << {href:"news.html"  , text:"Новости"}
+		nav_links << {href:"about.html"  , text:"О кафедре"}
+		nav_links << {href:"sostav.html", text:"Состав кафедры"}
+		nav_links << {href:"consult.html", text:"Консультации"}
 		nav_links << {href:"photo.html" , text:"Фотографии"}
 		#nav_links << {href:"", text:"Контакты"}
 
