@@ -109,17 +109,27 @@ def generate_about(nav_links)
 	result_file.write(header + body + footer)
 end
 
+def generate_school(nav_links)
+	header = generate_header(nav_links, "Научно-педагогическая школа")
+	body   = generate_body("#{Dir.pwd}/Main/school.haml")
+	footer = generate_footer
+	result_file = File.open("#{Dir.pwd}/school.html", 'w')
+	result_file.write(header + body + footer)
+end
+
 def generate_main_pages(nav_links)
 	generate_sostav(nav_links)
 	generate_photo(nav_links)
 	generate_news(nav_links)
 	generate_consult(nav_links)
 	generate_about(nav_links)
+	generate_school(nav_links)
 end
 
 nav_links = []
 		nav_links << {href:"news.html"  , text:"Новости"}
 		nav_links << {href:"about.html"  , text:"О кафедре"}
+		nav_links << {href:"school.html"  , text:"Научно-педагогическая школа"}
 		nav_links << {href:"sostav.html", text:"Состав кафедры"}
 		nav_links << {href:"consult.html", text:"Консультации"}
 		nav_links << {href:"photo.html" , text:"Фотографии"}
