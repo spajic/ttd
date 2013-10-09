@@ -117,6 +117,14 @@ def generate_school(nav_links)
 	result_file.write(header + body + footer)
 end
 
+def generate_contacts(nav_links)
+	header = generate_header(nav_links, "Контакты")
+	body   = generate_body("#{Dir.pwd}/Main/contacts.haml")
+	footer = generate_footer
+	result_file = File.open("#{Dir.pwd}/contacts.html", 'w')
+	result_file.write(header + body + footer)
+end
+
 def generate_main_pages(nav_links)
 	generate_sostav(nav_links)
 	generate_photo(nav_links)
@@ -124,6 +132,7 @@ def generate_main_pages(nav_links)
 	generate_consult(nav_links)
 	generate_about(nav_links)
 	generate_school(nav_links)
+	generate_contacts(nav_links)
 end
 
 nav_links = []
@@ -133,7 +142,7 @@ nav_links = []
 		nav_links << {href:"sostav.html", text:"Состав кафедры"}
 		nav_links << {href:"consult.html", text:"Консультации"}
 		nav_links << {href:"photo.html" , text:"Фотографии"}
-		#nav_links << {href:"", text:"Контакты"}
+		nav_links << {href:"contacts.html", text:"Контакты"}
 
 generate_personal_pages(nav_links)
 generate_main_pages(nav_links)
