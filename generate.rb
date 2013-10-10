@@ -133,6 +133,14 @@ def generate_dissers(nav_links)
 	result_file.write(header + body + footer)
 end
 
+def generate_literature(nav_links)
+	header = generate_header(nav_links, "Литература")
+	body   = generate_body("#{Dir.pwd}/Main/literature.haml")
+	footer = generate_footer
+	result_file = File.open("#{Dir.pwd}/literature.html", 'w')
+	result_file.write(header + body + footer)
+end
+
 def generate_main_pages(nav_links)
 	generate_sostav(nav_links)
 	generate_photo(nav_links)
@@ -142,6 +150,7 @@ def generate_main_pages(nav_links)
 	generate_school(nav_links)
 	generate_contacts(nav_links)
 	generate_dissers(nav_links)
+	generate_literature(nav_links)
 end
 
 nav_links = []
@@ -153,6 +162,6 @@ nav_links = []
 		nav_links << {href:"photo.html" , text:"Фотографии"}
 		nav_links << {href:"contacts.html", text:"Контакты"}
 		nav_links << {href:"dissers.html", text:"Подготовка специалистов высшей квалификации"}
-
+		nav_links << {href:"literature.html", text:"Литература"}
 generate_personal_pages(nav_links)
 generate_main_pages(nav_links)
