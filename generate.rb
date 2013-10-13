@@ -157,6 +157,14 @@ def generate_statement(nav_links)
 	result_file.write(header + body + footer)
 end
 
+def generate_rating(nav_links)
+	header = generate_header(nav_links, "Рейтинг")
+	body   = generate_body("#{Dir.pwd}/Main/rating.haml")
+	footer = generate_footer
+	result_file = File.open("#{Dir.pwd}/rating.html", 'w')
+	result_file.write(header + body + footer)
+end
+
 def generate_main_pages(nav_links)
 	generate_sostav(nav_links)
 	generate_photo(nav_links)
@@ -169,6 +177,7 @@ def generate_main_pages(nav_links)
 	generate_literature(nav_links)
 	generate_schedule(nav_links)
 	generate_statement(nav_links)
+	generate_rating(nav_links)
 end
 
 nav_links = []
@@ -183,5 +192,6 @@ nav_links = []
 		nav_links << {href:"literature.html", text:"Литература"}
 		nav_links << {href:"schedule.html", text:"Расписание"}
 		nav_links << {href:"statement.html", text:"Положение о кафедре"}
+		nav_links << {href:"rating.html", text:"Рейтинг"}
 generate_personal_pages(nav_links)
 generate_main_pages(nav_links)
