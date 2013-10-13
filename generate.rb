@@ -149,6 +149,14 @@ def generate_schedule(nav_links)
 	result_file.write(header + body + footer)
 end
 
+def generate_statement(nav_links)
+	header = generate_header(nav_links, "Положение о кафедре")
+	body   = generate_body("#{Dir.pwd}/Main/statement.haml")
+	footer = generate_footer
+	result_file = File.open("#{Dir.pwd}/statement.html", 'w')
+	result_file.write(header + body + footer)
+end
+
 def generate_main_pages(nav_links)
 	generate_sostav(nav_links)
 	generate_photo(nav_links)
@@ -160,6 +168,7 @@ def generate_main_pages(nav_links)
 	generate_dissers(nav_links)
 	generate_literature(nav_links)
 	generate_schedule(nav_links)
+	generate_statement(nav_links)
 end
 
 nav_links = []
@@ -173,5 +182,6 @@ nav_links = []
 		nav_links << {href:"dissers.html", text:"Подготовка специалистов высшей квалификации"}
 		nav_links << {href:"literature.html", text:"Литература"}
 		nav_links << {href:"schedule.html", text:"Расписание"}
+		nav_links << {href:"statement.html", text:"Положение о кафедре"}
 generate_personal_pages(nav_links)
 generate_main_pages(nav_links)
