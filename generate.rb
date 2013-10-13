@@ -2,7 +2,7 @@
 # хедер, основная часть, и футер.
 # При этом основная часть делается пишется на haml.
 
-def generate_header(nav_links, active_link)
+def generate_header_clever(nav_links, active_link)
 	header = 
 '<!DOCTYPE html>
 <html>
@@ -33,6 +33,52 @@ def generate_header(nav_links, active_link)
     	header = header + str
     end      					
     header = header + '
+    				</ul>
+  			</div>
+		</div>  
+'
+end
+
+def generate_header(nav_links, active_link)
+	header = 
+'<!DOCTYPE html>
+<html>
+	<head>
+  		<meta charset="utf-8">
+    	<title>Кафедра термодинамики и тепловых двигателей</title>
+    	<!-- Bootstrap -->
+    	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    	<link href="my.css" rel="stylesheet" media="screen">
+  	</head>
+	<body>  	
+  		<div class="container-fluid" margin-left: auto;>
+  			<div class="navbar">
+  				<div class="navbar-inner">
+    				<a class="brand" href="news.html">Кафедра термодинамики и тепловых двигателей</a>
+    				<ul class="nav">
+    					<li class="active"><a href="news.html">Новости</a>
+    					<li><a href="sostav.html">Состав</a>
+    					<li><a href="photo.html">Фото</a>
+    					<li class="dropdown">
+                      		<a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Расписание <b class="caret"></b></a>
+                      		<ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                        		<li role="presentation"><a role="menuitem" tabindex="-1" href="schedule.html">Нагрузка преподавателей</a></li>
+                        		<li role="presentation"><a role="menuitem" tabindex="-1" href="consult.html">Консультации</a></li>
+                      		</ul>
+                    	</li>
+    					<li class="dropdown">
+                      		<a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Справочная информация <b class="caret"></b></a>
+                      		<ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                        		<li role="presentation"><a role="menuitem" tabindex="-1" href="about.html">История кафедры</a></li>
+                        		<li role="presentation"><a role="menuitem" tabindex="-1" href="school.html">Научно-педагогическая школа</a></li>
+                        		<li role="presentation"><a role="menuitem" tabindex="-1" href="dissers.html">Диссертации</a></li>
+                        		<li role="presentation"><a role="menuitem" tabindex="-1" href="statement.html">Положение о кафедре</a></li>
+                        		<li role="presentation" class="divider"></li>
+                        		<li role="presentation"><a role="menuitem" tabindex="-1" href="literature.html">Литература</a></li>
+                        		<li role="presentation"><a role="menuitem" tabindex="-1" href="rating.html">Рейтинг</a></li>
+                      		</ul>
+                    	</li>
+    					<li><a href="contacts.html">Контакты</a>
     				</ul>
   			</div>
 		</div>  
@@ -180,18 +226,29 @@ def generate_main_pages(nav_links)
 	generate_rating(nav_links)
 end
 
-nav_links = []
-		nav_links << {href:"news.html"  , text:"Новости"}
-		nav_links << {href:"about.html"  , text:"О кафедре"}
-		nav_links << {href:"school.html"  , text:"Научно-педагогическая школа"}
-		nav_links << {href:"sostav.html", text:"Состав кафедры"}
-		nav_links << {href:"consult.html", text:"Консультации"}
-		nav_links << {href:"photo.html" , text:"Фотографии"}
-		nav_links << {href:"contacts.html", text:"Контакты"}
-		nav_links << {href:"dissers.html", text:"Подготовка специалистов высшей квалификации"}
-		nav_links << {href:"literature.html", text:"Литература"}
-		nav_links << {href:"schedule.html", text:"Расписание"}
-		nav_links << {href:"statement.html", text:"Положение о кафедре"}
-		nav_links << {href:"rating.html", text:"Рейтинг"}
+nav_links = [
+	{text:"Новости"				, href:"news.html"		},
+	{text:"Фото"				, href:"photo.html"	 	},
+	{text:"Состав"				, href:"sostav.html"	},
+	{text:"О кафедре"			, href:"about.html"	 	},
+	{text:"Расписание"			, 
+		childs: [
+			{text:"Нагрузка преподавателей"	, href:"schedule.html"	},
+			{text:"Консультации"		   	, href:"consult.html"	}
+		]
+	},
+	{text:"Справочная информация",
+		childs: [
+			{text:"История кафедры"			, href:"about.html"},
+			{text:"Научно-педагогическая школа", href:"school.html"},
+			{text:"Диссертации"				, href:"dissers.html"},
+			{text:"Литература"				, href:"literature.html"},
+			{text:"Положение о кафедре"		, href:"statement.html"},
+			{text:"Рейтинг"					, href:"rating.html"},
+		]
+	},
+	{text:"Контакты"			, href:"contacts.html"	}
+]
+
 generate_personal_pages(nav_links)
 generate_main_pages(nav_links)
