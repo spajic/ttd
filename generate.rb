@@ -117,7 +117,9 @@ def generate_main_pages(nav_links)
 			generate_one_of_main_pages(nav_links, item[:title], item[:name])
 		else
 			item[:childs].each do |child_item|
-				generate_one_of_main_pages(nav_links, child_item[:title], child_item[:name])
+				if child_item.is_a?(Hash)
+					generate_one_of_main_pages(nav_links, child_item[:title], child_item[:name])
+				end
 			end
 		end
 	end
@@ -151,8 +153,9 @@ nav_links = [
 			{title:"История кафедры"				, name:"about"},
 			{title:"Научно-педагогическая школа"	, name:"school"},
 			{title:"Диссертации"					, name:"dissers"},
-			{title:"Литература"						, name:"literature"},
 			{title:"Положение о кафедре"			, name:"statement"},
+			"divider",
+			{title:"Литература"						, name:"literature"},
 			{title:"Рейтинг"						, name:"rating"},
 		]
 	},
