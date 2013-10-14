@@ -141,7 +141,6 @@ end
 nav_links = [
 	{title:"Новости"		, name:"news"		},
 	{title:"Состав"			, name:"sostav"	},
-	{title:"Фото"			, name:"photo"	},
 	{title:"Расписание"		, 
 		childs: [
 			{title:"Нагрузка преподавателей"	, name:"schedule"	},
@@ -159,6 +158,7 @@ nav_links = [
 			{title:"Рейтинг"						, name:"rating"},
 		]
 	},
+	{title:"Фото"			, name:"photo"	},
 	{title:"Контакты"			, name:"contacts"	}
 ]
 
