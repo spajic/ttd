@@ -47,6 +47,32 @@ def generate_dropdown_html(text, childs, active_link, id)
     return res
 end
 
+def generate_navbar_html(nav_links, active_link)
+	generate_navbar_item_html('Новости', 'news.html', active_link) +
+    generate_navbar_item_html('Состав', 'sostav.html', active_link) +
+    generate_navbar_item_html('Фото', 'photo.html', active_link) + 
+    generate_dropdown_html('Расписание', 
+    	[
+			{title:"Нагрузка преподавателей"	, name:"schedule.html"	},
+			{title:"Консультации"		   	, name:"consult.html"	}
+		],
+		active_link, 'drop1'
+	) + 
+    generate_dropdown_html('Справочная информация', 
+    	[
+			{title:"История кафедры"			, name:"about.html"},
+			{title:"Научно-педагогическая школа", name:"school.html"},
+			{title:"Диссертации"				, name:"dissers.html"},
+			{title:"Положение о кафедре"		, name:"statement.html"},
+			'divider',
+			{title:"Литература"					, name:"literature.html"},
+			{title:"Рейтинг"					, name:"rating.html"}
+		],
+		active_link, 'drop2'
+	) +
+    generate_navbar_item_html('Контакты', 'contacts.html', active_link)
+end
+
 def generate_header(nav_links, active_link)
 	header = 
 '<!DOCTYPE html>
@@ -63,30 +89,8 @@ def generate_header(nav_links, active_link)
   			<div class="navbar">
   				<div class="navbar-inner">
     				<a class="brand" href="news.html">Кафедра термодинамики и тепловых двигателей</a>
-    				<ul class="nav">' +
-    					generate_navbar_item_html('Новости', 'news.html', active_link) +
-    					generate_navbar_item_html('Состав', 'sostav.html', active_link) +
-    					generate_navbar_item_html('Фото', 'photo.html', active_link) + 
-    					generate_dropdown_html('Расписание', 
-    						[
-								{title:"Нагрузка преподавателей"	, name:"schedule.html"	},
-								{title:"Консультации"		   	, name:"consult.html"	}
-							],
-							active_link, 'drop1'
-						) + 
-    					generate_dropdown_html('Справочная информация', 
-    						[
-								{title:"История кафедры"			, name:"about.html"},
-								{title:"Научно-педагогическая школа", name:"school.html"},
-								{title:"Диссертации"				, name:"dissers.html"},
-								{title:"Положение о кафедре"		, name:"statement.html"},
-								'divider',
-								{title:"Литература"				, name:"literature.html"},
-								{title:"Рейтинг"					, name:"rating.html"}
-							],
-							active_link, 'drop2'
-						) +
-    					generate_navbar_item_html('Контакты', 'contacts.html', active_link) + '
+    				<ul class="nav">' + 
+    					generate_navbar_html(nav_links, active_link) + '
     				</ul>
   			</div>
 		</div>  
