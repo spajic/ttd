@@ -127,7 +127,7 @@ end
 
 def generate_personal_pages(nav_links)
 	Dir["#{Dir.pwd}/PersonalPages/*"].each do |file_name|
-		header = generate_header(nav_links, "Нет")
+		header = generate_header(nav_links, "Состав")
 		body   = generate_body(file_name)
 		footer = generate_footer
 		result = header + body + footer	
@@ -140,8 +140,8 @@ end
 
 nav_links = [
 	{title:"Новости"		, name:"news"		},
-	{title:"Фото"			, name:"photo"	},
 	{title:"Состав"			, name:"sostav"	},
+	{title:"Фото"			, name:"photo"	},
 	{title:"Расписание"		, 
 		childs: [
 			{title:"Нагрузка преподавателей"	, name:"schedule"	},
