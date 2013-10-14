@@ -1,6 +1,6 @@
 # Идея такая. Генерировать странички сайта из трёх частей - 
 # хедер, основная часть, и футер.
-# При этом основная часть делается пишется на haml.
+# При этом основная часть пишется на haml.
 
 def generate_navbar_item_html(text, href, active_link)
 	if text == active_link
@@ -12,7 +12,7 @@ end
 
 def childs_contain_active_link?(childs, active_link)
 	childs.each do |ch|
-		if ch.is_a?(Hash) && ch[:text] == active_link
+		if ch.is_a?(Hash) && ch[:title] == active_link
 			return true
 		end
 	end
@@ -36,7 +36,7 @@ def generate_dropdown_html(text, childs, active_link, id)
     		"
     	else
     		res = res + 
-    		"<li role='presentation'><a role='menuitem' tabindex='-1' href=#{ch[:href]}>#{ch[:text]}</a></li>
+    		"<li role='presentation'><a role='menuitem' tabindex='-1' href=#{ch[:name]}>#{ch[:title]}</a></li>
     		"
     	end
     end
@@ -69,20 +69,20 @@ def generate_header(nav_links, active_link)
     					generate_navbar_item_html('Фото', 'photo.html', active_link) + 
     					generate_dropdown_html('Расписание', 
     						[
-								{text:"Нагрузка преподавателей"	, href:"schedule.html"	},
-								{text:"Консультации"		   	, href:"consult.html"	}
+								{title:"Нагрузка преподавателей"	, name:"schedule.html"	},
+								{title:"Консультации"		   	, name:"consult.html"	}
 							],
 							active_link, 'drop1'
 						) + 
     					generate_dropdown_html('Справочная информация', 
     						[
-								{text:"История кафедры"			, href:"about.html"},
-								{text:"Научно-педагогическая школа", href:"school.html"},
-								{text:"Диссертации"				, href:"dissers.html"},
-								{text:"Положение о кафедре"		, href:"statement.html"},
+								{title:"История кафедры"			, name:"about.html"},
+								{title:"Научно-педагогическая школа", name:"school.html"},
+								{title:"Диссертации"				, name:"dissers.html"},
+								{title:"Положение о кафедре"		, name:"statement.html"},
 								'divider',
-								{text:"Литература"				, href:"literature.html"},
-								{text:"Рейтинг"					, href:"rating.html"}
+								{title:"Литература"				, name:"literature.html"},
+								{title:"Рейтинг"					, name:"rating.html"}
 							],
 							active_link, 'drop2'
 						) +
@@ -110,6 +110,24 @@ def generate_body(haml_file_name)
 	body
 end
 
+def generate_one_of_main_pages(nav_links, page_title, page_name)
+	header = generate_header(nav_links, page_title)
+	body   = generate_body("#{Dir.pwd}/Main/#{page_name}.haml")
+	footer = generate_footer
+	result_file = File.open("#{Dir.pwd}/#{page_name}.html", 'w')
+	result_file.write(header + body + footer)
+end
+
+def generate_main_pages(nav_links)
+	nav_links.each do |item|
+		if item[:childs].nil?
+			generate_one_of_main_pages(nav_links, item[:title], item[:name])
+		else
+			generate_main_pages(item[:childs])
+		end
+	end
+end
+
 def generate_personal_pages(nav_links)
 	Dir["#{Dir.pwd}/PersonalPages/*"].each do |file_name|
 		header = generate_header(nav_links, "Нет")
@@ -123,50 +141,27 @@ def generate_personal_pages(nav_links)
 	end
 end
 
-def generate_one_of_main_pages(nav_links, page_title, page_name)
-	header = generate_header(nav_links, page_title)
-	body   = generate_body("#{Dir.pwd}/Main/#{page_name}.haml")
-	footer = generate_footer
-	result_file = File.open("#{Dir.pwd}/#{page_name}.html", 'w')
-	result_file.write(header + body + footer)
-end
-
-def generate_main_pages(nav_links)
-	generate_one_of_main_pages(nav_links, "Состав", "sostav")
-	generate_one_of_main_pages(nav_links, "Фото", "photo")
-	generate_one_of_main_pages(nav_links, "Новости", "news")
-	generate_one_of_main_pages(nav_links, "Консультации", "consult")
-	generate_one_of_main_pages(nav_links, "История кафедры", "about")
-	generate_one_of_main_pages(nav_links, "Школа", "school")
-	generate_one_of_main_pages(nav_links, "Диссертации", "dissers")
-	generate_one_of_main_pages(nav_links, "Литература", "literature")
-	generate_one_of_main_pages(nav_links, "Расписание", "schedule")
-	generate_one_of_main_pages(nav_links, "Положение о кафедре", "statement")
-	generate_one_of_main_pages(nav_links, "Рейтинг", "rating")
-end
-
 nav_links = [
-	{text:"Новости"				, href:"news.html"		},
-	{text:"Фото"				, href:"photo.html"	 	},
-	{text:"Состав"				, href:"sostav.html"	},
-	{text:"О кафедре"			, href:"about.html"	 	},
-	{text:"Расписание"			, 
+	{title:"Новости"		, name:"news"		},
+	{title:"Фото"			, name:"photo"	},
+	{title:"Состав"			, name:"sostav"	},
+	{title:"Расписание"		, 
 		childs: [
-			{text:"Нагрузка преподавателей"	, href:"schedule.html"	},
-			{text:"Консультации"		   	, href:"consult.html"	}
+			{title:"Нагрузка преподавателей"	, name:"schedule"	},
+			{title:"Консультации"		   		, name:"consult"	}
 		]
 	},
-	{text:"Справочная информация",
+	{title:"Справочная информация",
 		childs: [
-			{text:"История кафедры"			, href:"about.html"},
-			{text:"Научно-педагогическая школа", href:"school.html"},
-			{text:"Диссертации"				, href:"dissers.html"},
-			{text:"Литература"				, href:"literature.html"},
-			{text:"Положение о кафедре"		, href:"statement.html"},
-			{text:"Рейтинг"					, href:"rating.html"},
+			{title:"История кафедры"				, name:"about"},
+			{title:"Научно-педагогическая школа"	, name:"school"},
+			{title:"Диссертации"					, name:"dissers"},
+			{title:"Литература"						, name:"literature"},
+			{title:"Положение о кафедре"			, name:"statement"},
+			{title:"Рейтинг"						, name:"rating"},
 		]
 	},
-	{text:"Контакты"			, href:"contacts.html"	}
+	{title:"Контакты"			, name:"contacts"	}
 ]
 
 generate_personal_pages(nav_links)
