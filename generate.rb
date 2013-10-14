@@ -2,11 +2,11 @@
 # хедер, основная часть, и футер.
 # При этом основная часть пишется на haml.
 
-def generate_navbar_item_html(text, href, active_link)
-	if text == active_link
-		"<li class='active'><a href=#{href}>#{text}</a>"
+def generate_navbar_item_html(title, name, active_title)
+	if title == active_title
+		"<li class='active'><a href='#{name}'>#{title}</a>"
 	else
-		"<li><a href=#{href}>#{text}</a>"
+		"<li><a href='#{name}'>#{title}</a>"
 	end
 end
 
