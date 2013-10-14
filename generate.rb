@@ -123,115 +123,26 @@ def generate_personal_pages(nav_links)
 	end
 end
 
-def generate_sostav(nav_links)
-	header = generate_header(nav_links, "Состав кафедры")
-	body   = generate_body("#{Dir.pwd}/Main/sostav.haml")
+def generate_one_of_main_pages(nav_links, page_title, page_name)
+	header = generate_header(nav_links, page_title)
+	body   = generate_body("#{Dir.pwd}/Main/#{page_name}.haml")
 	footer = generate_footer
-	result_file = File.open("#{Dir.pwd}/sostav.html", 'w')
-	result_file.write(header + body + footer)
-end
-
-def generate_photo(nav_links)
-	header = generate_header(nav_links, "Фотографии")
-	body   = generate_body("#{Dir.pwd}/Main/photo.haml")
-	footer = generate_footer
-	result_file = File.open("#{Dir.pwd}/photo.html", 'w')
-	result_file.write(header + body + footer)
-end
-
-def generate_news(nav_links)
-	header = generate_header(nav_links, "Новости")
-	body   = generate_body("#{Dir.pwd}/Main/news.haml")
-	footer = generate_footer
-	result_file = File.open("#{Dir.pwd}/news.html", 'w')
-	result_file.write(header + body + footer)
-end
-
-def generate_consult(nav_links)
-	header = generate_header(nav_links, "Консультации")
-	body   = generate_body("#{Dir.pwd}/Main/consult.haml")
-	footer = generate_footer
-	result_file = File.open("#{Dir.pwd}/consult.html", 'w')
-	result_file.write(header + body + footer)
-end
-
-def generate_about(nav_links)
-	header = generate_header(nav_links, "О кафедре")
-	body   = generate_body("#{Dir.pwd}/Main/about.haml")
-	footer = generate_footer
-	result_file = File.open("#{Dir.pwd}/about.html", 'w')
-	result_file.write(header + body + footer)
-end
-
-def generate_school(nav_links)
-	header = generate_header(nav_links, "Научно-педагогическая школа")
-	body   = generate_body("#{Dir.pwd}/Main/school.haml")
-	footer = generate_footer
-	result_file = File.open("#{Dir.pwd}/school.html", 'w')
-	result_file.write(header + body + footer)
-end
-
-def generate_contacts(nav_links)
-	header = generate_header(nav_links, "Контакты")
-	body   = generate_body("#{Dir.pwd}/Main/contacts.haml")
-	footer = generate_footer
-	result_file = File.open("#{Dir.pwd}/contacts.html", 'w')
-	result_file.write(header + body + footer)
-end
-
-def generate_dissers(nav_links)
-	header = generate_header(nav_links, "Подготовка специалистов высшей квалификации")
-	body   = generate_body("#{Dir.pwd}/Main/dissers.haml")
-	footer = generate_footer
-	result_file = File.open("#{Dir.pwd}/dissers.html", 'w')
-	result_file.write(header + body + footer)
-end
-
-def generate_literature(nav_links)
-	header = generate_header(nav_links, "Литература")
-	body   = generate_body("#{Dir.pwd}/Main/literature.haml")
-	footer = generate_footer
-	result_file = File.open("#{Dir.pwd}/literature.html", 'w')
-	result_file.write(header + body + footer)
-end
-
-def generate_schedule(nav_links)
-	header = generate_header(nav_links, "Расписание")
-	body   = generate_body("#{Dir.pwd}/Main/schedule.haml")
-	footer = generate_footer
-	result_file = File.open("#{Dir.pwd}/schedule.html", 'w')
-	result_file.write(header + body + footer)
-end
-
-def generate_statement(nav_links)
-	header = generate_header(nav_links, "Положение о кафедре")
-	body   = generate_body("#{Dir.pwd}/Main/statement.haml")
-	footer = generate_footer
-	result_file = File.open("#{Dir.pwd}/statement.html", 'w')
-	result_file.write(header + body + footer)
-end
-
-def generate_rating(nav_links)
-	header = generate_header(nav_links, "Рейтинг")
-	body   = generate_body("#{Dir.pwd}/Main/rating.haml")
-	footer = generate_footer
-	result_file = File.open("#{Dir.pwd}/rating.html", 'w')
+	result_file = File.open("#{Dir.pwd}/#{page_name}.html", 'w')
 	result_file.write(header + body + footer)
 end
 
 def generate_main_pages(nav_links)
-	generate_sostav(nav_links)
-	generate_photo(nav_links)
-	generate_news(nav_links)
-	generate_consult(nav_links)
-	generate_about(nav_links)
-	generate_school(nav_links)
-	generate_contacts(nav_links)
-	generate_dissers(nav_links)
-	generate_literature(nav_links)
-	generate_schedule(nav_links)
-	generate_statement(nav_links)
-	generate_rating(nav_links)
+	generate_one_of_main_pages(nav_links, "Состав", "sostav")
+	generate_one_of_main_pages(nav_links, "Фото", "photo")
+	generate_one_of_main_pages(nav_links, "Новости", "news")
+	generate_one_of_main_pages(nav_links, "Консультации", "consult")
+	generate_one_of_main_pages(nav_links, "История кафедры", "about")
+	generate_one_of_main_pages(nav_links, "Школа", "school")
+	generate_one_of_main_pages(nav_links, "Диссертации", "dissers")
+	generate_one_of_main_pages(nav_links, "Литература", "literature")
+	generate_one_of_main_pages(nav_links, "Расписание", "schedule")
+	generate_one_of_main_pages(nav_links, "Положение о кафедре", "statement")
+	generate_one_of_main_pages(nav_links, "Рейтинг", "rating")
 end
 
 nav_links = [
