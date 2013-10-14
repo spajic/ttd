@@ -36,7 +36,7 @@ def generate_dropdown_html(text, childs, active_link, id)
     		"
     	else
     		res = res + 
-    		"<li role='presentation'><a role='menuitem' tabindex='-1' href=#{ch[:name]}>#{ch[:title]}</a></li>
+    		"<li role='presentation'><a role='menuitem' tabindex='-1' href='#{ch[:name]}.html'>#{ch[:title]}</a></li>
     		"
     	end
     end
@@ -48,29 +48,18 @@ def generate_dropdown_html(text, childs, active_link, id)
 end
 
 def generate_navbar_html(nav_links, active_link)
-	generate_navbar_item_html('Новости', 'news.html', active_link) +
-    generate_navbar_item_html('Состав', 'sostav.html', active_link) +
-    generate_navbar_item_html('Фото', 'photo.html', active_link) + 
-    generate_dropdown_html('Расписание', 
-    	[
-			{title:"Нагрузка преподавателей"	, name:"schedule.html"	},
-			{title:"Консультации"		   	, name:"consult.html"	}
-		],
-		active_link, 'drop1'
-	) + 
-    generate_dropdown_html('Справочная информация', 
-    	[
-			{title:"История кафедры"			, name:"about.html"},
-			{title:"Научно-педагогическая школа", name:"school.html"},
-			{title:"Диссертации"				, name:"dissers.html"},
-			{title:"Положение о кафедре"		, name:"statement.html"},
-			'divider',
-			{title:"Литература"					, name:"literature.html"},
-			{title:"Рейтинг"					, name:"rating.html"}
-		],
-		active_link, 'drop2'
-	) +
-    generate_navbar_item_html('Контакты', 'contacts.html', active_link)
+	res = ""
+	nav_links.each do |item|
+		if item[:childs].nil?
+			res = res + 
+				generate_navbar_item_html(item[:title], "#{item[:name]}.html", active_link) + "
+				"
+		else
+			res = res +
+				generate_dropdown_html(item[:title], item[:childs], active_link, item[:title])
+		end
+	end
+	res
 end
 
 def generate_header(nav_links, active_link)
@@ -127,7 +116,9 @@ def generate_main_pages(nav_links)
 		if item[:childs].nil?
 			generate_one_of_main_pages(nav_links, item[:title], item[:name])
 		else
-			generate_main_pages(item[:childs])
+			item[:childs].each do |child_item|
+				generate_one_of_main_pages(nav_links, child_item[:title], child_item[:name])
+			end
 		end
 	end
 end
