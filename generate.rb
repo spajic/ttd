@@ -159,7 +159,7 @@ nav_links = [
 		]
 	},
 	{title:"Фото"			, name:"photo"	},
-	{title:"Контакты"			, name:"contacts"	}
+	{title:"Контакты"		, name:"contacts"	}
 ]
 
 generate_personal_pages(nav_links)
