@@ -2,41 +2,49 @@
 # хедер, основная часть, и футер.
 # При этом основная часть делается пишется на haml.
 
-def generate_header_clever(nav_links, active_link)
-	header = 
-'<!DOCTYPE html>
-<html>
-	<head>
-  		<meta charset="utf-8">
-    	<title>Кафедра термодинамики и тепловых двигателей</title>
-    	<!-- Bootstrap -->
-    	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    	<link href="my.css" rel="stylesheet" media="screen">
-  	</head>
-	<body>  	
-  		<div class="container-fluid" margin-left: auto;>
-  			<div class="navbar">
-  				<div class="navbar-inner">
-    				<a class="brand" href="sostav.html">Кафедра термодинамики и тепловых двигателей</a>
-    				<ul class="nav">
-'
-    nav_links.each do |link|
-    	if link[:text] == active_link
-    		str = 
-"						<li class='active'><a href='#{link[:href]}'>#{link[:text]}</a></li>
-"    		
-		else
-    		str = 
-"						<li><a href='#{link[:href]}'>#{link[:text]}</a></li>
-"
+def generate_navbar_item_html(text, href, active_link)
+	if text == active_link
+		"<li class='active'><a href=#{href}>#{text}</a>"
+	else
+		"<li><a href=#{href}>#{text}</a>"
+	end
+end
+
+def childs_contain_active_link?(childs, active_link)
+	childs.each do |ch|
+		if ch.is_a?(Hash) && ch[:text] == active_link
+			return true
 		end
-    	header = header + str
-    end      					
-    header = header + '
-    				</ul>
-  			</div>
-		</div>  
-'
+	end
+	return false
+end
+
+def generate_dropdown_html(text, childs, active_link, id)
+	if childs_contain_active_link?(childs, active_link)
+		res = "<li class='active dropdown'>"
+	else
+		res = "<li class='dropdown'>"
+	end
+	res = res + "
+    	<a id='#{id}' href='#' role='button' class='dropdown-toggle' data-toggle='dropdown'>#{text} <b class='caret'></b></a>
+            <ul class='dropdown-menu' role='menu' aria-labelledby='#{id}'>
+            "
+    childs.each do |ch|
+    	if(ch == 'divider')
+    		res = res + 
+    		"<li role='presentation' class='divider'></li>
+    		"
+    	else
+    		res = res + 
+    		"<li role='presentation'><a role='menuitem' tabindex='-1' href=#{ch[:href]}>#{ch[:text]}</a></li>
+    		"
+    	end
+    end
+    res = res + 
+    '                
+            </ul>
+    </li>'
+    return res
 end
 
 def generate_header(nav_links, active_link)
@@ -55,30 +63,30 @@ def generate_header(nav_links, active_link)
   			<div class="navbar">
   				<div class="navbar-inner">
     				<a class="brand" href="news.html">Кафедра термодинамики и тепловых двигателей</a>
-    				<ul class="nav">
-    					<li class="active"><a href="news.html">Новости</a>
-    					<li><a href="sostav.html">Состав</a>
-    					<li><a href="photo.html">Фото</a>
-    					<li class="dropdown">
-                      		<a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Расписание <b class="caret"></b></a>
-                      		<ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
-                        		<li role="presentation"><a role="menuitem" tabindex="-1" href="schedule.html">Нагрузка преподавателей</a></li>
-                        		<li role="presentation"><a role="menuitem" tabindex="-1" href="consult.html">Консультации</a></li>
-                      		</ul>
-                    	</li>
-    					<li class="dropdown">
-                      		<a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Справочная информация <b class="caret"></b></a>
-                      		<ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
-                        		<li role="presentation"><a role="menuitem" tabindex="-1" href="about.html">История кафедры</a></li>
-                        		<li role="presentation"><a role="menuitem" tabindex="-1" href="school.html">Научно-педагогическая школа</a></li>
-                        		<li role="presentation"><a role="menuitem" tabindex="-1" href="dissers.html">Диссертации</a></li>
-                        		<li role="presentation"><a role="menuitem" tabindex="-1" href="statement.html">Положение о кафедре</a></li>
-                        		<li role="presentation" class="divider"></li>
-                        		<li role="presentation"><a role="menuitem" tabindex="-1" href="literature.html">Литература</a></li>
-                        		<li role="presentation"><a role="menuitem" tabindex="-1" href="rating.html">Рейтинг</a></li>
-                      		</ul>
-                    	</li>
-    					<li><a href="contacts.html">Контакты</a>
+    				<ul class="nav">' +
+    					generate_navbar_item_html('Новости', 'news.html', active_link) +
+    					generate_navbar_item_html('Состав', 'sostav.html', active_link) +
+    					generate_navbar_item_html('Фото', 'photo.html', active_link) + 
+    					generate_dropdown_html('Расписание', 
+    						[
+								{text:"Нагрузка преподавателей"	, href:"schedule.html"	},
+								{text:"Консультации"		   	, href:"consult.html"	}
+							],
+							active_link, 'drop1'
+						) + 
+    					generate_dropdown_html('Справочная информация', 
+    						[
+								{text:"История кафедры"			, href:"about.html"},
+								{text:"Научно-педагогическая школа", href:"school.html"},
+								{text:"Диссертации"				, href:"dissers.html"},
+								{text:"Положение о кафедре"		, href:"statement.html"},
+								'divider',
+								{text:"Литература"				, href:"literature.html"},
+								{text:"Рейтинг"					, href:"rating.html"}
+							],
+							active_link, 'drop2'
+						) +
+    					generate_navbar_item_html('Контакты', 'contacts.html', active_link) + '
     				</ul>
   			</div>
 		</div>  
