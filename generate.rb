@@ -140,7 +140,7 @@ end
 
 nav_links = [
 	{title:"Новости"		, name:"news"		},
-	{title:"Состав"			, name:"sostav"	},
+	{title:"Состав"			, name:"sostav"		},
 	{title:"Расписание"		, 
 		childs: [
 			{title:"Нагрузка преподавателей"	, name:"schedule"	},
