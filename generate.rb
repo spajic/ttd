@@ -165,3 +165,4 @@ nav_links = [
 
 generate_personal_pages(nav_links)
 generate_main_pages(nav_links)
+generate_one_of_main_pages(nav_links, "Новости", "news_2012")
