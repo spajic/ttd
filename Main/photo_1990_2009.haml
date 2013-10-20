@@ -1,0 +1,30 @@
+.page-header
+	%h3 Фотографии 1990 - 2009
+%div{class:"alert alert-info"}
+	Возможен просмотр в полноэкранном режиме. Листать фотографии можно с клавиатуры.
+	%button{type:"button", class:"close", "data-dismiss"=>"alert"} &times;
+/ 1. Link to jQuery
+%script{src: "http://code.jquery.com/jquery-1.10.1.min.js"}
+/ fotorama.css & fotorama.js, 13 KB, 28 KB
+%link{href: "http://fotorama.s3.amazonaws.com/4.1.16/fotorama.css", rel:"stylesheet"}
+%script{src: "http://fotorama.s3.amazonaws.com/4.1.16/fotorama.js"}
+
+/ 2. Add images to <div class="fotorama"></div>
+.fotorama{"data-width"=>"800", align:"center", "data-allow-full-screen" => "true", "data-keyboard"=>"true", "data-loop"=>"true"}
+	 
+	%a{href:"img/history/1990-2009/1.jpg", "data-caption"=>"1990-2009"}
+	%a{href:"img/history/1990-2009/2.jpg", "data-caption"=>"1990-2009"}
+	%a{href:"img/history/1990-2009/3.jpg", "data-caption"=>"1990-2009"}
+	%a{href:"img/history/1990-2009/4.jpg", "data-caption"=>"1990-2009"}
+	%a{href:"img/history/1990-2009/5.jpg", "data-caption"=>"1990-2009"}
+	%a{href:"img/history/1990-2009/6.jpg", "data-caption"=>"1990-2009"}
+	%a{href:"img/history/1990-2009/7.jpg", "data-caption"=>"1990-2009"}
+	%a{href:"img/history/1990-2009/8.jpg", "data-caption"=>"1990-2009"}
+	%a{href:"img/history/1990-2009/9.jpg", "data-caption"=>"1990-2009"}
+	%a{href:"img/history/1990-2009/10.jpg", "data-caption"=>"1990-2009"}
+	%a{href:"img/history/1990-2009/11.jpg", "data-caption"=>"1990-2009"}
+	%a{href:"img/history/1990-2009/12.jpg", "data-caption"=>"1990-2009"}
+	%a{href:"img/history/1990-2009/13.jpg", "data-caption"=>"1990-2009"}
+	%a{href:"img/history/1990-2009/14.jpg", "data-caption"=>"1990-2009"}
+
+/ 3. Enjoy

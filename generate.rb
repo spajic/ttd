@@ -159,7 +159,13 @@ nav_links = [
 			{title:"Рейтинг"						, name:"rating"},
 		]
 	},
-	{title:"Фото"			, name:"photo"	},
+	{title:"Фото"			, 
+		childs: [
+			{title:"Фото до 1989 года"				, name:"photo_before_1989"},
+			{title:"Фото 1990-2009"					, name:"photo_1990_2009"},
+			{title:"Фото после 2010 года"			, name:"photo_after_2010"}
+		]	
+	},
 	{title:"Контакты"		, name:"contacts"	}
 ]
 

@@ -1,0 +1,26 @@
+.page-header
+	%h3 Фотографии после 2010 года
+%div{class:"alert alert-info"}
+	Возможен просмотр в полноэкранном режиме. Листать фотографии можно с клавиатуры.
+	%button{type:"button", class:"close", "data-dismiss"=>"alert"} &times;
+/ 1. Link to jQuery
+%script{src: "http://code.jquery.com/jquery-1.10.1.min.js"}
+/ fotorama.css & fotorama.js, 13 KB, 28 KB
+%link{href: "http://fotorama.s3.amazonaws.com/4.1.16/fotorama.css", rel:"stylesheet"}
+%script{src: "http://fotorama.s3.amazonaws.com/4.1.16/fotorama.js"}
+
+/ 2. Add images to <div class="fotorama"></div>
+.fotorama{"data-width"=>"800", align:"center", "data-allow-full-screen" => "true", "data-keyboard"=>"true", "data-loop"=>"true"}
+	 
+	%a{href:"img/history/2010-/1.jpg", "data-caption"=>"2010-.."}
+	%a{href:"img/history/2010-/2.jpg", "data-caption"=>"2010-.."}
+	%a{href:"img/history/2010-/3.jpg", "data-caption"=>"2010-.."}
+	%a{href:"img/history/2010-/4.jpg", "data-caption"=>"2010-.."}
+	%a{href:"img/history/2010-/5.jpg", "data-caption"=>"2010-.."}
+	%a{href:"img/history/2010-/6.jpg", "data-caption"=>"2010-.."}
+	%a{href:"img/history/2010-/7.jpg", "data-caption"=>"2010-.."}
+	%a{href:"img/history/2010-/8.jpg", "data-caption"=>"2010-.."}
+	%a{href:"img/history/2010-/9.jpg", "data-caption"=>"2010-.."}
+	%a{href:"img/history/2010-/10.jpg", "data-caption"=>"2010-.."}
+	%a{href:"img/history/2010-/11.jpg", "data-caption"=>"2010-.."}
+/ 3. Enjoy
