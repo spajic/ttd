@@ -1,4 +1,4 @@
-<iframe id="spajic_frame" position="absolute" width="100%" height="1300" seamless="" frameborder="0" src="new/sostav.html" onload="load()"> iFrame </iframe> 
+<iframe id="spajic_frame" position="absolute" width="100%" height="1300" seamless="" frameborder="0" src="new/news.html" onload="load()"> iFrame </iframe> 
 <script>
 function load()
 {
@@ -6,8 +6,8 @@ function load()
   var frameDoc = my_frame.contentDocument || my_frame.contentWindow.document;
   var bot = frameDoc.getElementById("bottom_div");
   my_frame.height = bot.offsetTop + 10;
-  if(my_frame.height < 600) {
-  	my_frame.height = 600
+  if(my_frame.height < 800) {
+  	my_frame.height = 800
   }
 }
 </script>
