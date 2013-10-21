@@ -145,7 +145,6 @@ end
 nav_links = [
 	{title:"Новости"		, name:"news"		},
 	{title:"Состав"			, name:"sostav"		},
-	{title:"Филиалы"		, name:"branches"	},
 	{title:"Расписание"		, 
 		childs: [
 			{title:"Нагрузка преподавателей"	, name:"schedule"	},
@@ -170,6 +169,7 @@ nav_links = [
 			{title:"Фото после 2010 года"			, name:"photo_after_2010"}
 		]	
 	},
+	{title:"Филиалы, НОЦ"	, name:"branches"	},
 	{title:"Контакты"		, name:"contacts"	}
 ]
 
