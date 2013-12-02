@@ -165,7 +165,7 @@ nav_links = [
 	{title:"Фото"			, 
 		childs: [
 			{title:"Фото до 1970 года"		, name:"photo_before_1970"},
-			{title:"Фото до 1989 года"		, name:"photo_before_1989"},
+			{title:"Фото 1971-1989"			, name:"photo_before_1989"},
 			{title:"Фото 1990-2009"			, name:"photo_1990_2009"},
 			{title:"Фото после 2010 года"	, name:"photo_after_2010"}
 		]	
