@@ -36,7 +36,7 @@ def generate_dropdown_html(text, childs, active_link, id)
     		"
     	else
     		res = res + 
-    		"<li role='presentation'><a role='menuitem' tabindex='-1' href='#{ch[:name]}.html?dummy=1'>#{ch[:title]}</a></li>
+    		"<li role='presentation'><a role='menuitem' tabindex='-1' href='#{ch[:name]}.html?dummy=2'>#{ch[:title]}</a></li>
     		"
     	end
     end
@@ -52,7 +52,7 @@ def generate_navbar_html(nav_links, active_link)
 	nav_links.each do |item|
 		if item[:childs].nil?
 			res = res + 
-				generate_navbar_item_html(item[:title], "#{item[:name]}.html?dummy=1", active_link) + "
+				generate_navbar_item_html(item[:title], "#{item[:name]}.html?dummy=2", active_link) + "
 				"
 		else
 			res = res +
@@ -77,7 +77,7 @@ def generate_header(nav_links, active_link)
   		<div class="container-fluid" margin-left: auto;>
   			<div class="navbar">
   				<div class="navbar-inner">
-    				<a class="brand" href="news.html?dummy=1">Кафедра термодинамики и тепловых двигателей</a>
+    				<a class="brand" href="news.html?dummy=2">Кафедра термодинамики и тепловых двигателей</a>
     				<ul class="nav">' + 
     					generate_navbar_html(nav_links, active_link) + '
     				</ul>
@@ -143,7 +143,7 @@ def generate_personal_pages(nav_links)
 end
 
 nav_links = [
-	{title:"Новости"		, name:"news1"		},
+	{title:"Новости"		, name:"news2"		},
 	{title:"Состав"			, name:"sostav"		},
 	{title:"Расписание"		, 
 		childs: [
