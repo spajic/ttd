@@ -143,7 +143,7 @@ def generate_personal_pages(nav_links)
 end
 
 nav_links = [
-	{title:"Новости"		, name:"news"		},
+	{title:"Новости"		, name:"news1"		},
 	{title:"Состав"			, name:"sostav"		},
 	{title:"Расписание"		, 
 		childs: [
