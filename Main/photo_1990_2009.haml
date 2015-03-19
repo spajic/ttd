@@ -4,13 +4,13 @@
 	Возможен просмотр в полноэкранном режиме. Листать фотографии можно с клавиатуры.
 	%button{type:"button", class:"close", "data-dismiss"=>"alert"} &times;
 / 1. Link to jQuery
-%script{src: "http://code.jquery.com/jquery-1.10.2.min.js"}
+%script{src: "jquery/jquery.js"}
 / fotorama.css & fotorama.js, 13 KB, 28 KB
-%link{href: "http://fotorama.s3.amazonaws.com/4.4.8/fotorama.css", rel:"stylesheet"}
-%script{src: "http://fotorama.s3.amazonaws.com/4.4.8/fotorama.js"}
+%link{href: "fotorama/fotorama.css", rel:"stylesheet"}
+%script{src: "fotorama/fotorama.js"}
 
 / 2. Add images to <div class="fotorama"></div>
-.fotorama{"data-width"=>"800", align:"center", "data-allow-full-screen" => "true", "data-keyboard"=>"true", "data-loop"=>"true", "data-fit"=>"contain"}
+.fotorama{"data-width"=>"800", align:"center", "data-allowfullscreen" => "true", "data-keyboard"=>"true", "data-loop"=>"true", "data-fit"=>"contain"}
 	 
 	%a{href:"img/history/1990-2009/1.jpg", "data-caption"=>"1990-2009"}
 	%a{href:"img/history/1990-2009/2.jpg", "data-caption"=>"1990-2009"}
